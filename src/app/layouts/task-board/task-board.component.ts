@@ -25,7 +25,8 @@ export class TaskBoardComponent implements OnInit {
 
   getAllTasks() {
     this.taskService.getTasks().then(data => {
-      const tasks: [] = data as [];
+      // const tasks[] = data as [];
+      const tasks: any = data;
       tasks.forEach(task => {
         const boardId: string = task["boardId"];
         // Pushing Task to board based on boardId
