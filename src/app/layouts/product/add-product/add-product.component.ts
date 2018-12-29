@@ -25,7 +25,7 @@ export class AddProductComponent implements OnInit {
 		productForm.value['productAdded'] = moment().unix();
 		productForm.value['ratings'] = Math.floor(Math.random() * 5 + 1);
 		if (productForm.value['productImageUrl'] === undefined) {
-			productForm.value['productImageUrl'] = 'http://via.placeholder.com/640x360/007bff/ffffff';
+			productForm.value['productImageUrl'] = 'https://via.placeholder.com/640x360/FFFFFF/000000?text=Image+is+not+available';
 		}
 
 		productForm.value['favourite'] = false;
