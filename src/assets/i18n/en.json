@@ -8,5 +8,14 @@
   "MYACCOUNT": "My Account",
   "LOGOUT": "Log Out",
   "BESTPRODUCTS": "Our Best Products",
-  "VIEWALL": "See More"
+  "VIEWALL": "See More",
+  "ADD PRODUCT": "Add Product",
+  "PRODUCT NAME": "Product Name",
+  "PRODUCT CATEGORY": "Product Category",
+  "PRODUCT DESCRIPTION": "Product Description",
+  "PRODUCT PRICE": "Product Price",
+  "PRODUCT QUANTITY": "Product Quantity",
+  "PRODUCT SELLER": "Product Seller",
+  "PRODUCT IMAGE": "Product Image",
+  "IMAGE URL": "Image Url"
 }

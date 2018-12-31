@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Product } from 'src/app/shared/models/product';
+import { TranslateService } from '../../../shared/services/translate.service'
 
 declare var $: any;
 declare var require: any;
@@ -16,7 +17,7 @@ const moment = require('moment');
 })
 export class AddProductComponent implements OnInit {
 	product: Product = new Product();
-	constructor(private productService: ProductService) {}
+	constructor(private productService: ProductService, public translate: TranslateService) {}
 
 	ngOnInit() {}
 
@@ -39,5 +40,6 @@ export class AddProductComponent implements OnInit {
 		$('#exampleModalLong').modal('hide');
 
 		toastr.success('product ' + productForm.value['productName'] + 'is added successfully', 'Product Creation');
+
 	}
 }

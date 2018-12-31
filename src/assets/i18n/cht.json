@@ -1,0 +1,21 @@
+{
+  "TITLE": "購物車",
+  "HOME": "主頁",
+  "PRODUCTS": "貨品目錄",
+  "TASKBOARD": "工作台",
+  "CONTACT": "聯繫我們",
+  "SIGNIN": "客戶登入/註冊",
+  "MYACCOUNT": "我的戶口",
+  "LOGOUT": "登出",
+  "BESTPRODUCTS": "暢銷貨品",
+  "VIEWALL": "全部顯示",
+  "ADD PRODUCT": "新增貨品",
+  "PRODUCT NAME": "產品名稱",
+  "PRODUCT CATEGORY": "產品種類",
+  "PRODUCT DESCRIPTION": "產品描述",
+  "PRODUCT PRICE": "產品價格",
+  "PRODUCT QUANTITY": "產品數量",
+  "PRODUCT SELLER": "生產商",
+  "PRODUCT IMAGE": "產品圖片",
+  "IMAGE URL": "圖片網址"
+}

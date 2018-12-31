@@ -8,5 +8,14 @@
   "MYACCOUNT": "حساب من",
   "LOGOUT": "خروج",
   "BESTPRODUCTS": "بهترین محصولات ما",
-  "VIEWALL": "بیشتر ببین"
+  "VIEWALL": "بیشتر ببین",
+  "ADD PRODUCT": "Add Product",
+  "PRODUCT NAME": "Product Name",
+  "PRODUCT CATEGORY": "Product Category",
+  "PRODUCT DESCRIPTION": "Product Description",
+  "PRODUCT PRICE": "Product Price",
+  "PRODUCT QUANTITY": "Product Quantity",
+  "PRODUCT SELLER": "Product Seller",
+  "PRODUCT IMAGE": "Product Image",
+  "IMAGE URL": "Image Url"
 }

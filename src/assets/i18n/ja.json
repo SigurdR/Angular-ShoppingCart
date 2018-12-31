@@ -8,5 +8,14 @@
   "MYACCOUNT": "マイアカウント",
   "LOGOUT": "ログアウト",
   "BESTPRODUCTS": "私たちの最高の製品",
-  "VIEWALL": "続きを見る"
+  "VIEWALL": "続きを見る",
+  "ADD PRODUCT": "Add Product",
+  "PRODUCT NAME": "Product Name",
+  "PRODUCT CATEGORY": "Product Category",
+  "PRODUCT DESCRIPTION": "Product Description",
+  "PRODUCT PRICE": "Product Price",
+  "PRODUCT QUANTITY": "Product Quantity",
+  "PRODUCT SELLER": "Product Seller",
+  "PRODUCT IMAGE": "Product Image",
+  "IMAGE URL": "Image Url"
 }
