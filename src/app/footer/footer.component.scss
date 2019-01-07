@@ -1,0 +1,12 @@
+// footer {
+//     padding: calculateRem(8px) calculateRem(16px);
+//     margin-top: 2rem;
+//     position: sticky;
+//     top: 100%;
+//   }
+
+footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%
+}

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
+import { FooterComponent } from '../../../footer/footer.component';
 
 @Component({
 	selector: 'app-best-product',
@@ -26,7 +27,7 @@ export class BestProductComponent implements OnInit {
 				'0': { items: 1, margin: 5 },
 				'430': { items: 2, margin: 5 },
 				'550': { items: 3, margin: 5 },
-				'670': { items: 4, margin: 5 }
+				'670': { items: 6, margin: 5 }
 			},
 			autoplay: true,
 			loop: true,
