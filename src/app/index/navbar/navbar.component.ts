@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "../../shared/services/auth.service";
 import { ProductService } from "../../shared/services/product.service";
 import { TranslateService } from "../../shared/services/translate.service";
+import { AdminGuard } from '../../shared/services/admin_guard';
 declare var $: any;
 
 @Component({
@@ -23,7 +24,8 @@ export class NavbarComponent implements OnInit {
     public authService: AuthService,
     private router: Router,
     public productService: ProductService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public ag: AdminGuard
   ) {
     // console.log(translate.data);
   }

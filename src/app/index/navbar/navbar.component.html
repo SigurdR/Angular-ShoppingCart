@@ -26,8 +26,20 @@
           this.translate.data["PRODUCTS"] | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/task-board/tasks' ]">{{
+        <a class="nav-link" href="jaascript:;;" 
+        *ngIf="authService.isLoggedIn && authService.isLoggedIn()"
+        [routerLink]="[ '/task-board/tasks' ]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">{{
           this.translate.data["TASKBOARD"] | translate}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="jaascript:;;"
+        *ngIf="authService.isLoggedIn && authService.isAdmin()"
+        [routerLink]="[ '/admin-page' ]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 
+          this.translate.data["ADMIN"] | translate}}</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>

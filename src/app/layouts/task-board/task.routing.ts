@@ -1,6 +1,6 @@
 import { TaskBoardComponent } from "./task-board.component";
 import { Routes, RouterModule } from "@angular/router";
-import { AuthGuard } from "src/app/shared/services/auth_gaurd";
+import { AuthGuard } from "src/app/shared/services/auth_guard";
 
 const routes: Routes = [{
     path: "tasks",
