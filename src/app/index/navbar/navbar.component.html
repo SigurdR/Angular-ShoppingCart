@@ -1,5 +1,6 @@
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark indigo">
+<div *ngIf="!authService.isAdmin();else adminNav">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark indigo">
 
   <!-- Navbar brand -->
   <a class="navbar-brand" href="javascript:;;">ACart</a>
@@ -25,30 +26,11 @@
         <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">{{
           this.translate.data["PRODUCTS"] | translate}}</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="jaascript:;;" 
-        *ngIf="authService.isLoggedIn && authService.isLoggedIn()"
-        [routerLink]="[ '/task-board/tasks' ]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">{{
-          this.translate.data["TASKBOARD"] | translate}}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="jaascript:;;"
-        *ngIf="authService.isLoggedIn && authService.isAdmin()"
-        [routerLink]="[ '/admin-page' ]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">{{ 
-          this.translate.data["ADMIN"] | translate}}</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li> -->
     </ul>
     <!-- Links -->
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
         <div>
           <a class="nav-link" href="javascript:;;" [routerLink]="['/products/favourite-products']">
             <i class="fa fa-heart">
@@ -58,7 +40,7 @@
         </div>
 
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
         <div>
           <a class="nav-link" href="javascript:;;" [routerLink]="['/products/cart-items']">
             <i class="fa fa-shopping-cart">
@@ -110,5 +92,121 @@
   </div>
   <!-- Collapsible content -->
 
-</nav>
-<!--/.Navbar-->
+  </nav>
+  <!--/.Navbar-->
+</div>
+
+<ng-template #adminNav>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark indigo">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="javascript:;;">ACart-Admin</a>
+    
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleAdminNav" aria-controls="basicExampleNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleAdminNav">
+    
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <!-- <li class="nav-item active"> -->
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;;" 
+            [routerLink]="[ '/admin-page/dashboard' ]">{{this.translate.data["ADMIN HOME"] | translate}}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:;;" 
+            [routerLink]="[ '/admin-page/staff' ]">{{this.translate.data["STAFF"] | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="jaascript:;;" [routerLink]="[ '/products/all-products' ]">{{
+              this.translate.data["STOCK MANAGE"] | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="jaascript:;;" 
+            [routerLink]="[ '/task-board/tasks' ]">{{
+              this.translate.data["TASKBOARD"] | translate}}</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="jaascript:;;" 
+            [routerLink]="[ '/task-board/tasks' ]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">{{
+              this.translate.data["TASKBOARD"] | translate}}</a>
+          </li> -->
+        </ul>
+        <!-- Links -->
+    
+        <ul class="navbar-nav ml-auto">
+          <!-- <li class="nav-item">
+            <div>
+              <a class="nav-link" href="javascript:;;" [routerLink]="['/products/favourite-products']">
+                <i class="fa fa-heart">
+                  <span class="mt-2"> {{productService.navbarFavProdCount}}</span>
+                </i>
+              </a>
+            </div>
+    
+          </li>
+          <li class="nav-item">
+            <div>
+              <a class="nav-link" href="javascript:;;" [routerLink]="['/products/cart-items']">
+                <i class="fa fa-shopping-cart">
+                  <span class="mt-2"> {{productService.navbarCartCount}}</span>
+                </i>
+              </a>
+            </div>
+          </li> -->
+          <li class="nav-item" *ngIf="authService.isLoggedIn()">
+            <a class="nav-link" [routerLink]="['/users']">
+              <i class="fa fa-user mr-1"></i>{{this.translate.data["MYACCOUNT"] | translate}}</a>
+          </li>
+          <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+            <a class="nav-link" [routerLink]="[ '/login' ]">
+              <i class="fa fa-sign-in mr-1"></i> {{this.translate.data["SIGNIN"] | translate}}</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.isLoggedIn()">
+            <a class="nav-link" (click)="logout()">
+              <i class="fa fa-sign-in mr-1"></i>{{this.translate.data["LOGOUT"] | translate}}</a>
+          </li>
+          <li class="nav-item dropdown" dropdown>
+            <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light">
+              <i class="fa fa-globe"> </i><span class="caret"></span></a>
+            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+              <a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('en')">
+                <i class="fa fa-flag-o mr-2"></i>
+                English (en)</a>
+              <a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('cht')">
+                  <i class="fa fa-flag-o mr-2"></i>
+                  繁體中文 (cht)</a>
+              <a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('fr')">
+                <i class="fa fa-flag-o mr-2"></i>
+                French (fr)</a>
+              <a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('fa')">
+                <i class="fa fa-flag-o mr-2"></i>
+                Persian (fa)</a>
+              <a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('ja')">
+                <i class="fa fa-flag-o mr-2"></i>
+                Japanese (ja)</a>
+              <a class="dropdown-item waves-light" href="javascript:;;" (click)="setLang('hin')">
+                <i class="fa fa-flag-o mr-2"></i>
+                Hindi (hin)</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;;" class="nav-link">Angular v-{{angularVersion.full}}</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Collapsible content -->
+    
+      </nav>
+      <!--/.Navbar-->
+</ng-template>

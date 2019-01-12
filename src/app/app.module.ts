@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { IndexModule } from './index/index.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { AppRoutes } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutes } from './app.routing';
 import { TranslateService } from './shared/services/translate.service';
 import { ProductModule } from './layouts/product/product.module';
 import { UserModule } from './layouts/user/user.module';
+
 
 /* to load and set en.json as the default application language */
 export function setupTranslateFactory(service: TranslateService): Function {
@@ -26,7 +28,8 @@ export function setupTranslateFactory(service: TranslateService): Function {
 		ProductModule,
 		UserModule,
 		SharedModule,
-		RouterModule.forRoot(AppRoutes)
+		AppRoutingModule
+		// RouterModule.forRoot(AppRoutes)
 	],
 	providers: [
 		TranslateService,

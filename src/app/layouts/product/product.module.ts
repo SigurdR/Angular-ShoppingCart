@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
 // configuration and services
-import { ProductRoutes } from "./product.routing";
+// import { ProductRoutes } from "./product.routing";
 
 // Components
 import { CheckoutModule } from "./checkout/checkout.module";
@@ -18,9 +18,15 @@ import { SharedModule } from "../../shared/shared.module";
 import { FavouriteProductsComponent } from "./favourite-products/favourite-products.component";
 import { CartProductsComponent } from "./cart-products/cart-products.component";
 import { CartCalculatorComponent } from "./cart-calculator/cart-calculator.component";
+import { ProductRoutes } from './product-routing.module'
 
 @NgModule({
-	imports: [CommonModule, RouterModule.forChild(ProductRoutes), SharedModule, CheckoutModule],
+	imports: [
+		CommonModule, 
+		SharedModule, 
+		CheckoutModule,
+		RouterModule.forChild(ProductRoutes)
+	],
 	declarations: [
 		ProductComponent,
 		BestProductComponent,
