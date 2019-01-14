@@ -1,3 +1,64 @@
-<p>
-  staff works!
-</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+
+      <div class="container">
+        <app-card-loader [loop]="3" [height]="800" *ngIf="loading"></app-card-loader>
+        <div class="row" *ngIf="!loading">
+          <!-- List of Staffs -->
+          <div class="col-sm-4 mb-2" *ngFor="let staff of staffList | paginate: { itemsPerPage: 6, currentPage: page }">
+            <div class="item">
+              <div class=" mb-r">
+                <!--Card-->
+                <div class="card card-cascade wider">
+                  <!--Card image-->
+                  <a [routerLink]="['/staff/staff', staff.$key]">
+                    <div class="view overlay hm-white-slight">
+                      <img [src]="staff.staffAvatar" class="img-fluid" alt="" width="360px" height="640px">
+                      <a>
+                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+                      </a>
+                    </div>
+                  </a>
+                  <!--/.Card image-->
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <!--Category & Title-->
+                    <a class="text-muted">
+                      <h5>{{ staff.staffPosition }}</h5>
+                    </a>
+                    <p class="card-title">
+                      <strong>
+                        <a [routerLink]="['/staff/staff', staff.$key]" routerLinkActive="router-link-active">{{
+                          staff.staffLastName }} {{ staff.staffFirstName }}</a>
+                      </strong>
+                    </p>
+                    <!--Description-->
+                    <p class="card-text">{{ staff.staffDateJoined }}
+                    </p>
+                    <!--Card footer-->
+                    <div class="card-footer">
+                      <span class="left">{{ staff.staffGender }}</span>
+                      <span class="right">{{ staff.staffAge }}</span>
+                    </div>
+
+                  </div>
+                  <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="text-center mt-3">
+          <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+      </div>
+      <!--/.Card-->
+    </div>
+  </div>
+</div>

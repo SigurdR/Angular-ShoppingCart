@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StaffComponent } from './staff/staff.component';
+import { StaffListComponent } from './staff-list/staff-list.component'
 
 export const AdminRoutes: Routes = [
     {   
@@ -15,8 +16,8 @@ export const AdminRoutes: Routes = [
                 component: StaffComponent
             },
             {
-                path: '',
-                redirectTo: 'dashboard'
+                path: 'staff/:id',
+                component: StaffListComponent
             },
             {
                 path: "**",

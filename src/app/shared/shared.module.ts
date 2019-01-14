@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { FireBaseConfig } from "../../environments/firebaseConfig";
 import { FilterByBrandPipe } from "./pipes/filterByBrand.pipe";
 import { ProductService } from "./services/product.service";
+import { StaffService } from "./services/staff.service";
 import { AdminGuard } from "./services/admin_guard";
 import { AuthGuard } from "./services/auth_guard";
 import { AuthService } from "./services/auth.service";
@@ -77,6 +78,6 @@ import { CdkTreeModule } from "@angular/cdk/tree";
 		CdkTreeModule,
 		DragDropModule, ScrollingModule
 	],
-	providers: [AuthService, AuthGuard, AdminGuard, ProductService, UserService, FormBuilder]
+	providers: [AuthService, AuthGuard, AdminGuard, ProductService, UserService, FormBuilder, StaffService]
 })
 export class SharedModule { }
