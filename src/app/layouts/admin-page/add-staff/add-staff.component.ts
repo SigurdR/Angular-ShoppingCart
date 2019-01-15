@@ -40,7 +40,7 @@ export class AddStaffComponent implements OnInit {
 
 		$('#exampleModalLong').modal('hide');
 
-		toastr.success('product ' + staffForm.value['staffFirstName'] + 'is added successfully', 'Adding New Staff');
+		toastr.success('staff ' + staffForm.value['staffLastName'] +staffForm.value['staffFirstName'] + 'is added successfully');
 
 	}
 
