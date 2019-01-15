@@ -20,7 +20,7 @@ export class StaffService {
 		return this.staffs;
 	}
 
-	createStaff(data: Staff) {
+	addStaff(data: Staff) {
 		this.staffs.push(data);
 	}
 

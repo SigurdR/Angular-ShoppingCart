@@ -1,0 +1,112 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{this.translate.data["NEW STAFF"] | translate}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" #newStaffForm="ngForm" (ngSubmit)="addNewStaff(newStaffForm)">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="staffLastName">{{this.translate.data["LAST NAME"] | translate}}</label>
+                <input type="text" class="form-control" id="staffLastName" name="staffLastName" [(ngModel)]="staff.staffLastName" 
+                  placeholder="{{this.translate.data['LAST NAME'] | translate}}"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="staffFirstName">{{this.translate.data["FIRST NAME"] | translate}}</label>
+                <input type="text" class="form-control" id="staffFirstName" name="staffFirstName" [(ngModel)]="staff.staffFirstName" 
+                  placeholder="{{this.translate.data['FIRST NAME'] | translate}}"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="staffAge">{{this.translate.data["AGE"] | translate}}</label>
+                <input type="number" class="form-control" id="staffAge" name="staffAge" [(ngModel)]="staff.staffAge" 
+                  placeholder="{{this.translate.data['AGE'] | translate}}"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid age is required.
+                </div>
+              </div><br>
+              <div class="col-md-6 mb-3">
+                <label for="staffGender">{{this.translate.data["GENDER"] | translate}}</label>
+                <div class="row">
+                    <div class="custom-control custom-radio col-md-3 ml-3">
+                        <input type="radio" class="custom-control-input" id="staffMale" name="staffGender" [(ngModel)]="staff.staffGender" 
+                        value="M" required>
+                        <label class="custom-control-label" for="staffMale">{{ this.translate.data["MALE"] | translate }}</label>
+                    </div>
+                    <div class="custom-control custom-radio col-md-3 ml-3">
+                        <input type="radio" class="custom-control-input" id="staffFemale" name="staffGender" [(ngModel)]="staff.staffGender" 
+                        value="F" required> 
+                        <label class="custom-control-label" for="staffFemale">{{ this.translate.data["FEMALE"] | translate }}</label>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="staffPhoneNo">{{this.translate.data["PHONE NUMBER"] | translate}}</label>
+                <input type="number" class="form-control" id="staffPhoneNo" name="staffPhoneNo" minlength="8" maxlength="8"
+                  [(ngModel)]="staff.staffPhoneNo" placeholder="{{this.translate.data['PHONE NUMBER'] | translate}}"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid phone number is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="staffEmail">{{this.translate.data["EMAIL"] | translate}}</label>
+                <input type="email" class="form-control" id="staffEmail" name="staffEmail" [(ngModel)]="staff.staffEmail" 
+                  placeholder="{{this.translate.data['EMAIL'] | translate}}">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="staffPosition">{{this.translate.data["POSITION"] | translate}}</label>
+                <div>
+                    <select class="custom-select" name="staffPosition" id="staffPosition">
+                      <optgroup label="{{this.translate.data['MANAGEMENT'] | translate}}">
+                        <option value=""></option>
+                        <option value="Manager">{{this.translate.data['MANAGER'] | translate}}</option>
+                        <option value="Branch Manager">{{this.translate.data['BRANCH MANAGER'] | translate}}</option>
+                      </optgroup>
+                      <optgroup label="{{this.translate.data['FRONT LINE'] | translate}}">
+                        <option value="Senior Staff">{{this.translate.data['SENIOR STAFF'] | translate}}</option>
+                        <option value="Junior Staff">{{this.translate.data['JUNIOR STAFF'] | translate}}</option>
+                      </optgroup>
+                    </select>
+                </div>
+                <div class="invalid-feedback">
+                  Valid staff position is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="staffDateJoined">{{this.translate.data["DATE JOINED"] | translate}}</label>
+                <input type="date" class="form-control" id="staffDateJoined" name="staffDateJoined" [(ngModel)]="staff.staffDateJoined" 
+                  placeholder="{{this.translate.data['DATE JOINED'] | translate}}"
+                  value="" required>
+                <div class="invalid-feedback">
+                  Valid date is required.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="staffImageUrl">{{this.translate.data["STAFF IMAGE"] | translate}}</label>
+              <input type="text" class="form-control" id="staffImageUrl" [(ngModel)]="staff.staffImageUrl" name="staffImageUrl"
+                placeholder="Image Url" required>
+            </div>
+  
+            <hr class="mb-4">
+  
+            <button class="btn btn-primary btn-lg btn-block" type="submit">{{this.translate.data["NEW STAFF"] | translate}}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

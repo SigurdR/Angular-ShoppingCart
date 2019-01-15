@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { StaffService } from 'src/app/shared/services/staff.service';
 import { ToastrService } from 'src/app/shared/services/toastr.service';
 import { TranslateService } from 'src/app/shared/services/translate.service';
+import { AddStaffComponent } from '../add-staff/add-staff.component'
 
 @Component({
   selector: 'app-staff',

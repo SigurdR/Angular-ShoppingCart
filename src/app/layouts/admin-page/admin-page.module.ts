@@ -8,7 +8,8 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
 import { StaffComponent } from './staff/staff.component';
 import { StaffListComponent } from './staff-list/staff-list.component';
 import { RouterModule } from '@angular/router';
-import { AdminRoutes } from './admin-page-routing.module'
+import { AdminRoutes } from './admin-page-routing.module';
+import { AddStaffComponent } from './add-staff/add-staff.component'
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { AdminRoutes } from './admin-page-routing.module'
     DashboardComponent,
     ConfirmationDialogComponent,
     StaffComponent,
-    StaffListComponent
+    StaffListComponent,
+    AddStaffComponent
   ]
   
 })
