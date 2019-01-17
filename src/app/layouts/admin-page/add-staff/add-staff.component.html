@@ -9,6 +9,13 @@
           </button>
         </div>
         <div class="modal-body">
+          <!-- <div *ngIf="currentFileUpload" class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+              aria-valuemin="0" aria-valuemax="100"
+              [ngStyle]="{width:progress.percentage+'%'}">
+              {{progress.percentage}}%</div>
+          </div> -->
           <form class="needs-validation" #newStaffForm="ngForm" (ngSubmit)="addNewStaff(newStaffForm)">
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -97,9 +104,13 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="staffImageUrl">{{this.translate.data["STAFF IMAGE"] | translate}}</label>
+              <!-- <label for="staffImageUrl">{{this.translate.data["STAFF IMAGE"] | translate}}</label>
               <input type="text" class="form-control" id="staffImageUrl" [(ngModel)]="staff.staffImageUrl" name="staffImageUrl"
-                placeholder="Image Url" required>
+                placeholder="Image Url" required> -->
+
+                <label class="btn btn-default">
+                  <input type="file" class="form-control" id="straffImageUrl" (change)="selectFile($event)">
+                </label>
             </div>
   
             <hr class="mb-4">
