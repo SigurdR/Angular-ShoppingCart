@@ -8,6 +8,7 @@ import { ToastrService } from './toastr.service';
 export class StaffService {
 	staffs: AngularFireList<Staff>;
 	staff: AngularFireObject<Staff>;
+	staffKey: string;
 
 	constructor(
 		private db: AngularFireDatabase,
@@ -21,7 +22,8 @@ export class StaffService {
 	}
 
 	addStaff(data: Staff) {
-		this.staffs.push(data);
+		var newPostRef = this.staffs.push(data);
+		return newPostRef.key;
 	}
 
 	getStaffById(key: string) {

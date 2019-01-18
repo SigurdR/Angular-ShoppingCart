@@ -20,11 +20,13 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="staffLastName">{{this.translate.data["LAST NAME"] | translate}}</label>
-                <input type="text" class="form-control" id="staffLastName" name="staffLastName" [(ngModel)]="staff.staffLastName" 
+                <input type="text" class="form-control" id="staffLastName" name="staffLastName" required [(ngModel)]="staff.staffLastName" 
                   placeholder="{{this.translate.data['LAST NAME'] | translate}}"
-                  value="" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
+                  value="" #staffLastName="ngModel">
+                <div *ngIf="staffLastName.invalid && (staffLastName.dirty || staffLastName.touched)" class="invalid-feedback">
+                  <div *ngIf="staffLastName.errors.required">
+                    Last Name is required.
+                  </div>
                 </div>
               </div>
               <div class="col-md-6 mb-3">
@@ -37,12 +39,12 @@
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="staffAge">{{this.translate.data["AGE"] | translate}}</label>
-                <input type="number" class="form-control" id="staffAge" name="staffAge" [(ngModel)]="staff.staffAge" 
-                  placeholder="{{this.translate.data['AGE'] | translate}}"
+                <label for="staffBirthday">{{this.translate.data["BIRTHDAY"] | translate}}</label>
+                <input type="date" class="form-control" id="staffBirthday" name="staffBirthday" [(ngModel)]="staff.staffBirthday" 
+                  placeholder="{{this.translate.data['BIRTHDAY'] | translate}}"
                   value="" required>
                 <div class="invalid-feedback">
-                  Valid age is required.
+                  Valid birthday is required.
                 </div>
               </div><br>
               <div class="col-md-6 mb-3">
@@ -109,13 +111,14 @@
                 placeholder="Image Url" required> -->
 
                 <label class="btn btn-default">
-                  <input type="file" class="form-control" id="straffImageUrl" (change)="selectFile($event)">
+                  <input type="file" class="form-control" id="straffAvatar" (change)="selectFile($event)">
                 </label>
             </div>
   
             <hr class="mb-4">
   
-            <button class="btn btn-primary btn-lg btn-block" type="submit">{{this.translate.data["NEW STAFF"] | translate}}</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              {{this.translate.data["NEW STAFF"] | translate}}</button>
           </form>
         </div>
       </div>

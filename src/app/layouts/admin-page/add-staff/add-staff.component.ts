@@ -23,6 +23,8 @@ export class AddStaffComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: Upload;
   progress: { percentage: number } = { percentage: 0};
+  staffKey: string;
+  recPath: string = '/staffs';
 
   constructor(
     private staffService: StaffService, 
@@ -34,18 +36,19 @@ export class AddStaffComponent implements OnInit {
 
   addNewStaff(staffForm: NgForm) {
     staffForm.value['staffId'] = 'S_' + shortId.generate();
-    staffForm.valid['staffFirstName']
+    staffForm.valid['staffFirstName'];
+    staffForm.valid['staffLastName'];
     staffForm.value['createdOn'] = moment().unix();
-		if (staffForm.value['staffImageUrl'] === undefined) {
-			staffForm.value['staffImageUrl'] = 'https://via.placeholder.com/640x360/FFFFFF/000000?text=Image+is+not+available';
+		if (staffForm.value['staffAvatar'] === undefined) {
+			staffForm.value['staffAvatar'] = 'https://firebasestorage.googleapis.com/v0/b/angular-shoppingcart-ae8d3.appspot.com/o/staffs%2FNot%20Available.png?alt=media&token=3f140062-7a66-4af0-ba20-97287f646978';
 		}
 
 
     const date = staffForm.value['productAdded'];
-    
-    this.upload();
 
-		this.staffService.addStaff(staffForm.value);
+    this.staffKey = this.staffService.addStaff(staffForm.value);
+
+    this.upload(this.recPath, this.staffKey);
 
     this.staff = new Staff();
 
@@ -65,12 +68,20 @@ export class AddStaffComponent implements OnInit {
     }
   }
 
-  upload() {
+  // upload() {
+  //   const file = this.selectedFiles.item(0);
+  //   this.selectedFiles = undefined;
+
+  //   this.currentFileUpload = new Upload(file);
+  //   this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
+  // }
+
+  upload(recPath: string, staffKey: string) {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
 
     this.currentFileUpload = new Upload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
+    this.uploadService.pushFileToStorage(this.currentFileUpload, recPath, staffKey, this.progress);
   }
 
 }

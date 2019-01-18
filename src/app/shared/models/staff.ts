@@ -3,7 +3,7 @@ export class Staff {
     staffId: string;
     staffFirstName: string;
     staffLastName: string;
-    staffAge: number;
+    staffBirthday: string;
     staffGender: string;
     staffPhoneNo: string;
     staffEmail: string;

@@ -17,6 +17,7 @@ import { FireBaseConfig } from "../../environments/firebaseConfig";
 import { FilterByBrandPipe } from "./pipes/filterByBrand.pipe";
 import { ProductService } from "./services/product.service";
 import { StaffService } from "./services/staff.service";
+import { UploadService } from "./services/upload.service";
 import { AdminGuard } from "./services/admin_guard";
 import { AuthGuard } from "./services/auth_guard";
 import { AuthService } from "./services/auth.service";
@@ -29,6 +30,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 import { CdkTableModule } from "@angular/cdk/table";
 import { CdkTreeModule } from "@angular/cdk/tree";
+import { Upload } from "./models/upload";
 @NgModule({
 	imports: [
 		CommonModule,
@@ -78,6 +80,6 @@ import { CdkTreeModule } from "@angular/cdk/tree";
 		CdkTreeModule,
 		DragDropModule, ScrollingModule
 	],
-	providers: [AuthService, AuthGuard, AdminGuard, ProductService, UserService, FormBuilder, StaffService]
+	providers: [AuthService, AuthGuard, AdminGuard, ProductService, UserService, FormBuilder, StaffService, UploadService]
 })
 export class SharedModule { }

@@ -11,12 +11,39 @@ import { Observable } from 'rxjs';
 export class UploadService {
 
   private basePath = '/staff';
+  public imgUrl: string;
 
   constructor(private db: AngularFireDatabase) { }
 
-  pushFileToStorage(fileUpload: Upload, progress: { percentage: number}) {
+  // pushFileToStorage(fileUpload: Upload, progress: { percentage: number}) {
+  //   const storageRef = firebase.storage().ref();
+  //   const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
+
+  //   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+  //     (snapshot) => {
+  //       // in progress
+  //       const snap = snapshot as firebase.storage.UploadTaskSnapshot;
+  //       progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+  //     },
+  //     (error) => {
+  //       // fail
+  //       console.log(error);
+  //     },
+  //     () => {
+  //       // success
+  //       uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+  //         console.log('File available at', downloadURL);
+  //         fileUpload.url = downloadURL;
+  //         fileUpload.name = fileUpload.file.name;
+  //         this.saveFileData(fileUpload);
+  //       });
+  //     }
+  //   );
+  // }
+
+  pushFileToStorage(fileUpload: Upload, basePath: string, recId: string, progress: { percentage: number}) {
     const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
+    const uploadTask = storageRef.child(`${basePath}/${fileUpload.file.name}`).put(fileUpload.file);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) => {
@@ -31,10 +58,10 @@ export class UploadService {
       () => {
         // success
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          console.log('File available at', downloadURL);
+          // console.log('File available at', downloadURL);
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
-          // this.saveFileData(fileUpload);
+          this.saveFileURL(basePath, recId, fileUpload.url);
         });
       }
     );
@@ -42,6 +69,10 @@ export class UploadService {
 
   private saveFileData(fileUpload: Upload) {
     this.db.list(`${this.basePath}/`).push(fileUpload);
+  }
+
+  private saveFileURL(recPath: string, dataKey: string, imgPath: string) {
+    this.db.object(`${recPath}/`+`${dataKey}`).update({"staffAvatar": imgPath});
   }
 
   getFileUploads(numberItems): AngularFireList<Upload> {
